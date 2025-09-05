@@ -6,9 +6,9 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 class ChangePasswordPage extends StatelessWidget {
-  final String email;
+  final String email = Get.arguments["email"];
 
-  const ChangePasswordPage({super.key, required this.email});
+   ChangePasswordPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +104,12 @@ class ChangePasswordPage extends StatelessWidget {
                     child: ElevatedButton(
                       onPressed: controller.isLoading.value
                           ? null
-                          : () => controller.sendResetLink(email),
+                          : () => controller.resetPasswordWithToken(
+                                email: email,
+                                token: controller.tokenController.text.trim(),
+                                newPassword:
+                                    controller.passwordController.text.trim(),
+                              ),
                       style: ElevatedButton.styleFrom(
                         padding: const EdgeInsets.symmetric(vertical: 14),
                         shape: RoundedRectangleBorder(

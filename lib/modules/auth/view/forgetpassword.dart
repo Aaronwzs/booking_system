@@ -1,4 +1,5 @@
 import 'package:booking_system/modules/auth/controller/forgetpasswordcontroller.dart';
+import 'package:booking_system/modules/auth/model/userauthmodel.dart';
 import 'package:booking_system/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -35,8 +36,11 @@ class ForgotPasswordPage extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   fpController.sendResetLink(fpController.emailController.text.trim());
+                  
                   Get.snackbar("Success", "Password reset link sent to your email");
-                 Get.offAllNamed(AppRoutes.changePassword); 
+                 Get.offAllNamed(AppRoutes.changePassword,
+                 arguments: {'email': fpController.emailController.text.trim()}
+                 ); 
                 },
                 child: const Text("Send Reset Link"),
               ),  

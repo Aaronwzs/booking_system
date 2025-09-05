@@ -12,7 +12,7 @@ class Resetpwdmodel {
 
   factory Resetpwdmodel.fromMap(Map<String, dynamic> map) {
     return Resetpwdmodel(
-      token: map['token'],
+      token: map['prt_token'],
       isUsed: map['is_used'],
       expiresAt: DateTime.parse(map['expires_at']),
     );
@@ -20,7 +20,7 @@ class Resetpwdmodel {
 
   Map<String, dynamic> toMap() {
     return {
-      'token': token,
+      'prt_token': token,
       'is_used': isUsed,
       'expires_at': expiresAt.toIso8601String(),
     };
